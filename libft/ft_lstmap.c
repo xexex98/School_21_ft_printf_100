@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarra <mbarra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 13:26:24 by mbarra            #+#    #+#             */
-/*   Updated: 2021/10/24 19:02:29 by mbarra           ###   ########.fr       */
+/*   Created: 2021/10/18 18:46:34 by mbarra            #+#    #+#             */
+/*   Updated: 2021/10/19 12:13:53 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __LIBFTPRINTF_H__
-# define __LIBFTPRINTF_H__
+#include "libft.h"
 
-# include <stdio.h> //printf
-# include <stdlib.h> //malloc
-# include <stdarg.h> // va_arg(), va_start(), va_copy() и va_end()
-# include "libft.h"
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+{
+	t_list	*new;
+	t_list	*elem;
 
-int	ft_char_c(int	c);
-int	ft_type(va_list(ap), char c);
-int ft_string_s(char *s);
-void	ft_putchar_fd(char c, int fd);
-size_t	ft_strlen(const char *str);
-void	ft_putstr_fd(char *s, int fd);
-
-#endif
+	if (!lst || !f)
+		return (NULL);
+	new = NULL;
+	while (lst)
+	{
+		elem = ft_lstnew(f(lst->content));
+		if (!elem)
+		{
+			ft_lstclear(&lst, del);
+			ft_lstclear(&new, del);
+			break ;
+		}
+		lst = lst->next;
+		ft_lstadd_back(&new, elem);
+	}
+	return (new);
+}

@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarra <mbarra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 13:26:24 by mbarra            #+#    #+#             */
-/*   Updated: 2021/10/24 19:02:29 by mbarra           ###   ########.fr       */
+/*   Created: 2021/10/07 16:36:44 by mbarra            #+#    #+#             */
+/*   Updated: 2021/10/14 17:26:47 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __LIBFTPRINTF_H__
-# define __LIBFTPRINTF_H__
+#include "libft.h"
 
-# include <stdio.h> //printf
-# include <stdlib.h> //malloc
-# include <stdarg.h> // va_arg(), va_start(), va_copy() и va_end()
-# include "libft.h"
+char	*ft_strdup(const char *s)
+{
+	char	*cpy;
+	int		len;
+	int		i;
 
-int	ft_char_c(int	c);
-int	ft_type(va_list(ap), char c);
-int ft_string_s(char *s);
-void	ft_putchar_fd(char c, int fd);
-size_t	ft_strlen(const char *str);
-void	ft_putstr_fd(char *s, int fd);
-
-#endif
+	len = ft_strlen(s);
+	i = 0;
+	cpy = malloc(sizeof(char) * len + 1);
+	if (!cpy)
+		return (NULL);
+	while (s[i])
+	{	
+		cpy[i] = s[i];
+		i++;
+	}
+	cpy[i] = '\0';
+	return (cpy);
+}

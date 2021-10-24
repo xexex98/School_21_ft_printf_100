@@ -6,37 +6,50 @@
 /*   By: mbarra <mbarra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 13:33:18 by mbarra            #+#    #+#             */
-/*   Updated: 2021/10/21 18:08:28 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/10/24 19:00:56 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-// va_list
-// void va_start(va_list ap, last);
-// type va_arg(va_list ap, type);
-// void va_end(va_list ap);
-// void va_copy(va_list dest, va_list src);
-
-void	ft_printf(const char	*format, ...)
+int	ft_type(va_list ap, char c)
 {
-	unsigned int	length;
-
-	length = 0;
-	va_start(args, format)
-	while (*format)
-	{
-		if (*format != '%' && *format)
-			write(1, format, 1);
-		else
-			return ;
-		format++;
-	}
-	va_end (args);
+	int	size;
+	size = 0;
+	if (c == 'c')
+		size += ft_char_c(va_arg(ap, int));
+	else if (c == 's')
+		size += ft_string_s(va_arg(ap, char *));
+	return (size);
 }
- 
+int	foo(char	*format, ...)
+{
+	int		done;
+	va_list	ap;
+	va_start(ap, format);
+
+	done = 0;
+	while (format[done] != '\0')
+	{
+		if (format[done] == '%')
+		{
+			done += ft_type(ap, format[done + 1]);
+			done++;
+		}
+		else
+		{
+			write(1, &format[done], 1) ;
+		}
+		done++;
+	}
+	va_end(ap);
+	printf("%i\n", done);
+	return (done);
+}
+
 int main(void)
 {
-	ft_printf("123  %d");
-	return 0;
+	char *d;
+	foo("123%s", "69");
+	return (0);
 }

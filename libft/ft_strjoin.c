@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarra <mbarra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 13:26:24 by mbarra            #+#    #+#             */
-/*   Updated: 2021/10/24 19:02:29 by mbarra           ###   ########.fr       */
+/*   Created: 2021/10/12 11:46:56 by mbarra            #+#    #+#             */
+/*   Updated: 2021/10/15 10:19:33 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __LIBFTPRINTF_H__
-# define __LIBFTPRINTF_H__
+#include "libft.h"
 
-# include <stdio.h> //printf
-# include <stdlib.h> //malloc
-# include <stdarg.h> // va_arg(), va_start(), va_copy() и va_end()
-# include "libft.h"
+char	*ft_strjoin(char const *s1, char const	*s2)
+{
+	char	*sum;
+	int		i;
+	int		j;
 
-int	ft_char_c(int	c);
-int	ft_type(va_list(ap), char c);
-int ft_string_s(char *s);
-void	ft_putchar_fd(char c, int fd);
-size_t	ft_strlen(const char *str);
-void	ft_putstr_fd(char *s, int fd);
-
-#endif
+	i = 0;
+	j = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	sum = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!sum)
+		return (NULL);
+	while (s1[i] != '\0')
+	{
+		sum[i] = s1[i];
+		i++;
+	}
+	while (s2[j] != '\0')
+		sum[i++] = s2[j++];
+	sum[i] = '\0';
+	return (sum);
+}

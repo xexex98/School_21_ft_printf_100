@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarra <mbarra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 13:26:24 by mbarra            #+#    #+#             */
-/*   Updated: 2021/10/24 19:02:29 by mbarra           ###   ########.fr       */
+/*   Created: 2021/10/05 15:28:47 by mbarra            #+#    #+#             */
+/*   Updated: 2021/10/14 17:54:41 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __LIBFTPRINTF_H__
-# define __LIBFTPRINTF_H__
+#include "libft.h"
 
-# include <stdio.h> //printf
-# include <stdlib.h> //malloc
-# include <stdarg.h> // va_arg(), va_start(), va_copy() и va_end()
-# include "libft.h"
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	unsigned char	*p;
+	unsigned char	*c;
+	size_t			i;
 
-int	ft_char_c(int	c);
-int	ft_type(va_list(ap), char c);
-int ft_string_s(char *s);
-void	ft_putchar_fd(char c, int fd);
-size_t	ft_strlen(const char *str);
-void	ft_putstr_fd(char *s, int fd);
-
-#endif
+	if (n == 0)
+		return (dest);
+	if (!dest && !src)
+		return (NULL);
+	p = (unsigned char *) dest;
+	c = (unsigned char *) src;
+	i = 0;
+	while (i < n)
+	{
+		p[i] = c[i];
+		i++;
+	}
+	return (dest);
+}

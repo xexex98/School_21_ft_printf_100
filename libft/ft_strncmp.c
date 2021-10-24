@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarra <mbarra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 13:26:24 by mbarra            #+#    #+#             */
-/*   Updated: 2021/10/24 19:02:29 by mbarra           ###   ########.fr       */
+/*   Created: 2021/10/06 15:33:44 by mbarra            #+#    #+#             */
+/*   Updated: 2021/10/15 09:06:36 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __LIBFTPRINTF_H__
-# define __LIBFTPRINTF_H__
+#include "libft.h"
 
-# include <stdio.h> //printf
-# include <stdlib.h> //malloc
-# include <stdarg.h> // va_arg(), va_start(), va_copy() и va_end()
-# include "libft.h"
+int	ft_strncmp(const char	*s1, const char	*s2, size_t	n)
+{
+	unsigned char	*s_1;
+	unsigned char	*s_2;
+	size_t			i;
 
-int	ft_char_c(int	c);
-int	ft_type(va_list(ap), char c);
-int ft_string_s(char *s);
-void	ft_putchar_fd(char c, int fd);
-size_t	ft_strlen(const char *str);
-void	ft_putstr_fd(char *s, int fd);
-
-#endif
+	s_1 = (unsigned char *)s1;
+	s_2 = (unsigned char *)s2;
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (s_1[i] == s_2[i] && s_1[i] != '\0' && s_2[i] != '\0' && i < n - 1)
+		i++;
+	return (s_1[i] - s_2[i]);
+}
