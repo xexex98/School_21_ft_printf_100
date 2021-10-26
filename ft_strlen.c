@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.c                                           :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarra <mbarra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/24 14:24:21 by mbarra            #+#    #+#             */
-/*   Updated: 2021/10/25 14:14:27 by mbarra           ###   ########.fr       */
+/*   Created: 2021/10/04 19:20:31 by mbarra            #+#    #+#             */
+/*   Updated: 2021/10/26 11:54:33 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "ft_printf.h"
 
-int main(void)
+size_t	ft_strlen(const char	*str)
 {
-	char a;
-	char *d  = "456";
-	// a = &d;
-	printf("123 %p", d);
-	return (0);
+	size_t	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }
