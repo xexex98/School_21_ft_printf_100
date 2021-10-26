@@ -6,13 +6,13 @@
 /*   By: mbarra <mbarra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 10:48:27 by mbarra            #+#    #+#             */
-/*   Updated: 2021/10/26 12:32:13 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/10/26 14:01:53 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_ud(unsigned int n)
+size_t	ft_print_ud(unsigned int n)
 {
 	ft_putnbruns_fd(n, 1);
 	return (ft_intlen(n));

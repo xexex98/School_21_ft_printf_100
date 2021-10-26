@@ -6,13 +6,13 @@
 /*   By: mbarra <mbarra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 10:46:01 by mbarra            #+#    #+#             */
-/*   Updated: 2021/10/26 12:31:48 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/10/26 14:01:37 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_c(int c)
+size_t	ft_print_c(int c)
 {
 	ft_putchar_fd((unsigned char)c, 1);
 	return (1);

@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_id.c                                      :+:      :+:    :+:   */
+/*   ft_hexlenp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarra <mbarra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/26 10:47:43 by mbarra            #+#    #+#             */
-/*   Updated: 2021/10/26 14:01:41 by mbarra           ###   ########.fr       */
+/*   Created: 2021/10/26 10:49:00 by mbarra            #+#    #+#             */
+/*   Updated: 2021/10/26 14:34:14 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_print_id(int n)
+size_t	ft_hexlenp(unsigned long int n)
 {
-	ft_putnbr_fd(n, 1);
-	return (ft_intlen(n));
+	size_t	len;
+
+	len = 0;
+	if (n <= 0)
+		len++;
+	while (n != 0)
+	{
+		n = n / 16;
+		len++;
+	}
+	return (len);
 }

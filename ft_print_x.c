@@ -6,35 +6,36 @@
 /*   By: mbarra <mbarra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 10:49:30 by mbarra            #+#    #+#             */
-/*   Updated: 2021/10/26 12:32:25 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/10/26 18:53:09 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_x(unsigned int n)
+size_t	ft_print_x(unsigned int n)
 {
-	char			*x = "123456789abcdef";
 	size_t	i;
 	size_t	len;
-	char			*s;
+	char	*s;
 
 	len = ft_hexlen(n);
-	s = (char *)malloc(sizeof(len));
+	s = (char *)malloc(sizeof(*s) * (len + 1));
 	if (!s)
 		return (0);
 	s[len] = '\0';
 	len--;
-	while (n > 0)
+	if (n == 0)
+		s[len] = '0';
+	while (n != 0)
 	{
 		i = n % 16;
 		n = n / 16;
-		if (i == 0)
-			s[len--] = '0';
+		if (i >= 0 && i <= 9)
+			s[len--] = i + 48;
 		else
-			s[len--] = x[i - 1];
+			s[len--] = i + 87;
 	}
 	ft_putstr_fd(s, 1);
 	free(s);
-	return (ft_hexlen(n));
+	return (ft_strlen(s));
 }

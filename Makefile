@@ -6,14 +6,17 @@
 #    By: mbarra <mbarra@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/21 13:37:47 by mbarra            #+#    #+#              #
-#    Updated: 2021/10/26 12:27:44 by mbarra           ###   ########.fr        #
+#    Updated: 2021/10/26 20:24:51 by mbarra           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
+HEADER = ft_printf.h
+
 SRC =	ft_printf.c\
 		ft_hexlen.c\
+		ft_hexlenp.c\
 		ft_intlen.c\
 		ft_print_c.c\
 		ft_print_id.c\
@@ -31,21 +34,25 @@ SRC =	ft_printf.c\
 OBJS = ${SRC:.c=.o}
 
 CC 			= gcc
-RM 			= -rm -f
-FLAGS 		= -Wall -Wextra -Werror -I
+RM 			= rm -f
+FLAGS 		= -c -Wall -Wextra -Werror
 
-# bonus: 
+OBJECTS = $(patsubst %.c, %.o, $(SRC))
 
-all:		${NAME}
-${NAME}:	${OBJS}
-			ar rcs ${NAME} ${OBJS}
+all: $(NAME) 
+
+$(NAME): $(OBJECTS) $(HEADER)
+	ar rcs $(NAME) $?
+
+%.o: %.c
+	$(CC) $(FLAGS) $< -o $@
 
 clean:
-			${RM} ${OBJS}
+	$(RM) $(OBJECTS)
 
-fclean: 	clean
-			${RM} ${NAME}
+fclean: clean
+	$(RM) $(NAME)
 
-re:			fclean ${NAME}
+re: fclean all
 
-.PHONY: bonus all clean fclean re
+.PHONY: all clean fclean re
