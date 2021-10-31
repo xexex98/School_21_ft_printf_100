@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 10:50:38 by mbarra            #+#    #+#             */
-/*   Updated: 2021/10/26 18:21:22 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/10/31 13:53:46 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ size_t	ft_print_p(unsigned long int n)
 
 	ft_putstr_fd("0x", 1);
 	len = ft_hexlenp(n);
-	s = (char *)malloc(sizeof(*s) * (len + 1));
+	s = (char *)malloc(sizeof(char) * (len + 1));
 	if (!s)
 		return (0);
 	s[len] = '\0';

@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 13:33:18 by mbarra            #+#    #+#             */
-/*   Updated: 2021/10/26 19:02:28 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/10/31 14:02:32 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	ft_printf(const char	*format, ...)
 	{
 		if (format[done] == '%')
 		{
+			if (format[done + 1] == '\0')
+				break ;
 			len += ft_type(ap, format[done + 1]);
 			done++;
 		}
