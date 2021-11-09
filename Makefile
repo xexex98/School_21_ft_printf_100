@@ -44,7 +44,7 @@ all: $(NAME)
 $(NAME): $(OBJECTS) $(HEADER)
 	ar rcs $(NAME) $?
 
-%.o: %.c
+%.o: %.c $(HEADER)
 	$(CC) $(FLAGS) $< -o $@
 
 clean:
