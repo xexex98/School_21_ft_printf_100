@@ -35,7 +35,7 @@ OBJS = ${SRC:.c=.o}
 
 CC 			= gcc
 RM 			= rm -f
-FLAGS 		= -Wall -Wextra -Werror -I$(HEDER)
+FLAGS 		= -Wall -Wextra -Werror -I$(HEADER)
 
 OBJECTS = $(patsubst %.c, %.o, $(SRC))
 
